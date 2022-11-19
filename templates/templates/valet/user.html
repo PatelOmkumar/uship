@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Company Name</th>
+    <th>Description</th>
+    <th>Phone No</th>
+    <th>Profile Pic</th>
+    <th>Gender</th>
+  </tr>
+  {% for objec in objec %}
+  <tr>
+    <td>{{ objec.valet_fname }}</td>
+    <td>{{ objec.valet_lname }}</td>
+    <td>{{ objec.company_name }}</td>
+    <td>{{ objec.valet_desc }}</td>
+    <td>{{ objec.phone }}</td>
+    <td>{{ objec.profile_pic }}</td>
+    <td>{{ objec.gender }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

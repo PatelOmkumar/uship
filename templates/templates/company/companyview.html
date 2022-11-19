@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+        <!-- page-title -->
+        <div class="cmt-page-title-row">
+            <div class="cmt-page-title-row-inner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Company Profile</h2>
+                            </div> 
+                             <!-- <div class="breadcrumb-wrapper">
+                                <span>
+                                    <a title="Homepage" href="index.html">Home</a>
+                                </span>
+                                <span>About Us </span>
+                            </div>  -->
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div> 
+         <!-- page-title end --> 
+         <!-- page-title 
+         <div class="bgimgcompany">
+            <div class="cmt-page-title-row-inner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Company Profile</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div> -->  
+
+        <br><br>
+    <!-- site-main start -->
+    <!--page start-->
+<div class="page">
+    <!--site-main start-->
+    <div class="site-main">
+        {% for company_view in company_view %}
+        <!-- <div class="marquee-with-options">
+            <marquee>
+                <ul style="list-style-type: none;">
+                
+                    <li>{{ company_view.city  }}</li>
+                   <li>goa | </li>
+                   
+             </ul>
+            </marquee>
+        </div> -->
+        <!--action-row-section-->
+        <div class="cmt-row action-row-section cmt-bgcolor-skincolor cmt-bg cmt-bgimage-yes bg-img3 clearfix"  style="padding-top: 15px; padding-bottom: 5px;">
+            <div class="cmt-row-wrapper-bg-layer cmt-bg-layer"  style="padding-top: 0px; padding-bottom: 0px;"></div>
+            <!-- <div class="container"> -->
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12" style="padding-top: 0px; padding-bottom: 0px;">
+                        <div class="text-center">
+                           <div class="text-center featured-icon-box icon-align-top-content style4 text-center">
+                                <div class="featured-icon">
+                                    <div class="cmt-icon cmt-icon_element-onlytxt cmt-icon_element-color-white cmt-icon_element-size-lg">
+                                        <img class="img-fluid" src="{{ company_view.company_logo.url }}" alt="image" style="width: 250px;height: 250px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+        <!--action-row-section end-->
+
+        <!--fid-section-->
+        <section class="cmt-row fid-border-section mt_60 res-991-mt-0 clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cmt-bgcolor-grey z-index-2 position-relative">
+                            <div class="row no-gutters cmt-vertical_sep">
+                                <div class="col-lg-12 col-md-6 col-sm-6 cmt-box-col-wrapper text-center text-dark">
+                                    <!-- cmt-fid -->
+
+                                    <div class="cmt-fid inside cmt-fid-with-icon cmt-fid-view-lefticon style2">
+                                        
+                                        <div class="cmt-fid-contents">
+                                          <h2 class="cmt-fid-inner"> {{ company_view.company_name }}</h2>
+                                        </div>
+                                    </div><!-- cmt-fid end -->
+                                </div>
+                                
+                            </div><!-- row end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--fid-section end-->
+        
+        
+        <section class="cmt-row clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                       <div class="cmt-row testimonial-section cmt-bgcolor-darkgrey bg-img3 cmt-bg cmt-bgimage-yes" style="padding-left: 50px;">
+                            <div class="cmt-col-wrapper-bg-layer cmt-bg-layer"></div>
+                            <!-- section title -->
+                            <div class="section-title with-desc clearfix">
+                                <div class="title-header">
+                                    <h2 class="title">Company Description</h2>
+                                    <p> {{ company_view.company_desc }} </p>
+                                </div>
+                            </div><!-- section title end -->
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cmt-col-bgcolor-yes cmt-bg cmt-bgcolor-grey z-index-2 spacing-9 border-left">
+                            <div class="cmt-col-wrapper-bg-layer cmt-bg-layer"></div>
+                            <div class="layer-content">
+                                <div class="mb-15 pb-15 border-bottom">
+                                    <h5>Location</h5>
+                                    <div class="d-flex">
+                                        <div class="cmt-icon cmt-icon_element-onlytxt cmt-icon_element-color-skincolor cmt-icon_element-size-sm mr-2 mb-0">
+                                            <i class="flaticon flaticon-world"></i>
+                                        </div>
+                                        <div>{{ company_view.company_address }}</div>
+                                    </div>
+                                </div>
+                                <div class="mb-15 pb-15 border-bottom">
+                                    <h5>Phone</h5>
+                                    <div class="d-flex">
+                                        <div class="cmt-icon cmt-icon_element-onlytxt cmt-icon_element-color-skincolor cmt-icon_element-size-sm mr-2 mb-0">
+                                            <i class="flaticon flaticon-call"></i>
+                                        </div>
+                                        <div>Phone: {{ company_view.company_phone }}</div>
+                                    </div>
+                                </div>
+                                <div class="mb-15 pb-15 border-bottom">
+                                    <h5>Email</h5>
+                                    <div class="d-flex">
+                                        <div class="cmt-icon cmt-icon_element-onlytxt cmt-icon_element-color-skincolor cmt-icon_element-size-sm mr-2 mb-0">
+                                            <i class="flaticon flaticon-message"></i>
+                                        </div>
+                                        <div>Email: <a href="#">{{ company_view.company_emailid }}</a></div>
+                                    </div>
+                                </div>
+                               <div class="row">
+                                   <div class="colmd-12">
+                                       <button class="btn btn-primary">Book Now</button>
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row end -->
+            </div>
+        </section>
+
+        {% endfor %}
+    </div><!--site-main end-->
+
+
+</div><!-- page end -->
+    {% endblock %}

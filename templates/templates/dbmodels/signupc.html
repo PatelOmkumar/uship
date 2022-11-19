@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+<!-- page-title -->
+<div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">Company Signup</h2>
+                    </div>
+                    <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="index.html">Home</a>
+                        </span>
+                        <span>Signup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+
+<section class="cmt-row clearfix">
+    <div class="container">
+        <div class="row">
+                <div class="col-lg-3"></div>
+            <div class="col-lg-8">
+                <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                    
+                    <div class="layer-content">
+                        <div class="mb-30">
+                            <h3 class="mb-5">! Signup Here !</h3>
+                            
+                        </div>
+                        <form method="post" action="#" class="contact__form cmt-contactform-1 wrap-form clearfix" >
+                            {{ form }}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="name" type="text" value="" placeholder="Company Name" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="number" type="text" value="" placeholder="Company Phone Number" required="required"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="address" type="text" value="" placeholder="Company Address" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="state" type="text" value="" placeholder="State Name" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="city" type="text" value="" placeholder="City Name" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="area" type="text" value="" placeholder="Area Name" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="pincode" type="text" value="" placeholder="Pincode" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="logo" type="file" value="" placeholder="Company Logo" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="description" type="text" value="" placeholder="Company Description" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input name="email" type="text" value="" placeholder="Company Email" required="required"></span>
+                                    </label>
+                                </div>
+                                
+                                <button name="submit" class="cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit">Register</button>
+                            </div>
+                           
+                           
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<!--google_map-->
+
+
+</div><!--site-main end-->
+{% endblock %}

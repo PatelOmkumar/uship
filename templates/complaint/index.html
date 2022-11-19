@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+        <!-- page-title -->
+        <div class="cmt-page-title-row">
+            <div class="cmt-page-title-row-inner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Post Form</h2>
+                            </div>
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <a title="Homepage" href="">Home</a>
+                                </span>
+                                <span>Post Here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div><!-- page-title end-->
+
+
+    <!--site-main start-->
+    <div class="site-main">
+
+
+        <section class="cmt-row clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="ttm_single_image-wrapper">
+                            <img class="img-fluid" src="{% static 'images/single-img-ten.jpg' %}" alt="image">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                            <div class="cmt-col-wrapper-bg-layer cmt-bg-layer">
+                                <div class="cmt-col-wrapper-bg-layer-inner"></div>
+                            </div>
+                            <div class="layer-content">
+                                <div class="mb-30">
+                                    <h3 class="mb-5">! Post Here !</h3>
+                                </div>
+                                <form method="post" action="#" class="contact__form cmt-contactform-1 wrap-form clearfix" >
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span class="text-input">Category
+                                                    {{ forms.category_name  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span class="text-input">Subcategory
+                                                    {{ forms.subcate_name  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <label>
+                                                <span class="text-input">Post Image<br/>
+                                                    {{ forms.post_img  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                    
+                                        <div class="col-lg-12">
+                                            <label>
+                                                <span class="text-input">Post Description
+                                                    {{ forms.post_desc  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit">Post Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    {% endblock %}

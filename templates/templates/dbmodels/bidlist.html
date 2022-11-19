@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+<!-- page-title -->
+<div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">Post Bids</h2>
+                    </div>
+                    <!-- <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="index.html">Home</a>
+                        </span>
+                        <span>Contact Us</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+
+<section class="cmt-row clearfix" style="background-color: black; color:white">
+    <div class="container">
+        <table class="cmt-row clearfix col-lg-12" style="border: 10px solid white; color: white; text-align: center;">
+            <tr style="background-color: lavender;">
+                <td colspan="4" style="text-align: center;">
+                    <img src="{% static 'images/housescrap.jpg' %}" style="width: 400px; height: 400px;" />
+                    <h2 style="color: blue;">Base Price: 400 Rs</h2>
+                </td>
+            </tr>
+            <tr style="border: 5px solid lavender; font-size:x-large">
+                <th>Company </th>
+                <th>Bidding Date</th>
+                <th>Max Price</th>
+                <th>Book</th>
+            </tr>
+            <tr>
+                <td>S.R Enterprises</td>
+                <td>March 16, 2021</td>
+                <td>450</td>
+                <td><button class="btn btn-primary">Book Now</button></td>
+            </tr>
+            <tr>
+                <td>Karma Recycling</td>
+                <td>March 17, 2021</td>
+                <td>480</td>
+                <td><button class="btn btn-primary">Book Now</button></td>
+            </tr>
+            <tr>
+                <td>ScrapTap</td>
+                <td>March 17, 2021</td>
+                <td>500</td>
+                <td><button class="btn btn-primary">Book Now</button></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+
+
+
+</div><!--site-main end-->
+
+
+{% endblock %}

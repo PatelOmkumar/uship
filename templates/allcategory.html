@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+ <!-- page-title -->
+ <div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">Our Services</h2>
+                    </div>
+                    <!-- <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="index.html">Home</a>
+                        </span>
+                        <span>Services</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+
+    <!--fea_list-section-->
+
+    <!--fea_list-section end-->
+
+
+    <!--features-section-->
+    <section class="cmt-row features-section cmt-bgcolor-grey clearfix" style="background-color: black">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-7 m-auto">
+                    <!-- section title -->
+                    <div class="section-title title-style-center_text">
+                        <div class="title-header">
+                            <!-- <h5>ABOUT TRANSPORT</h5> -->
+                            <h2 class="title" style="background-color: white;">We Providing Services...</h2>
+                        </div>
+                        <div class="heading-seperator"><span></span></div>
+                    </div><!-- section title end -->
+                </div>
+            </div><!-- row end -->
+            <!-- slick_slider -->
+            <div class="row">
+                <div class="card-deck">
+                    {% for cate in cate %}
+                    <div class="card">
+                        <img src="{{ cate.cate_img.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cate.category_name }}</h5>
+                            <p class="card-text">{{ cate.cate_des }}</p>
+                            <a href="{% url 'companycate' cate.id %}" class="btn btn-info">View Company</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div><!-- row end -->
+</div>
+</section>
+<!--features-section-->
+
+
+<!--testimonial2-section-->
+
+<!--testimonial2-section end-->
+
+
+<!--blog-section-->
+
+<!--blog-section end-->
+
+
+</div><!--site-main end-->
+
+{% endblock  %}

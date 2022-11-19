@@ -1,0 +1,431 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+<script>
+    function validation()
+    {
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var gen = document.getElementById("gen").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email_id").value;
+        var pass = document.getElementById("password").value;
+        var cpass = document.getElementById("cpassword").value;
+        var address = document.getElementById("address").value;
+        var state = document.getElementById("state").value;
+        var city = document.getElementById("city").value;
+        var area = document.getElementById("area").value;
+        var pp = document.getElementById("profile_pic").value;
+        var errorflag = false;
+        var focusOn = '';
+    
+        // var formData = new FormData();
+        // var pp = document.getElementById("profile_pic").files[0];
+        // //formData.append("Filedata", pp);
+        // var t = pp.type.split('/').pop().toLowerCase();
+        // alert(t);
+        // //alert(pp);
+        // if (pp != "jpeg" && pp != "jpg" && pp != "png" ) {
+        //     alert('Please select a valid image file');
+        //     document.getElementById("cpp").value = '';
+        //     return false;
+        // }
+        //image- remaining
+    
+        if(fname == ""){
+            document.getElementById("cfid").style.display ='';
+            document.getElementById("cfvid").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.fname;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cfid").style.display ='none';
+            document.getElementById("cfvid").style.display ='none';
+            if(fname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("cfid").style.display ='none';
+                document.getElementById("cfvid").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.fname;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("cfid").style.display ='none';
+                document.getElementById("cfvid").style.display ='none';
+            }
+        }
+    
+        if(lname == ""){
+            document.getElementById("clid").style.display ='';
+            document.getElementById("clvid").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.lname;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("clid").style.display ='none';
+            document.getElementById("clvid").style.display ='none';
+            if(lname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("clid").style.display ='none';
+                document.getElementById("clvid").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.lname;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("clid").style.display ='none';
+                document.getElementById("clvid").style.display ='none';
+            }
+        }   
+    
+        if(email == ""){                          
+            document.getElementById("cemail").style.display ='';
+            document.getElementById("cemail2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.email;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cemail").style.display ='none';
+            document.getElementById("cemail2").style.display ='none';
+            if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(email)){
+                document.getElementById("cemail").style.display ='none';
+                document.getElementById("cemail2").style.display ='none';
+            }
+            else{
+                document.getElementById("cemail").style.display ='none';
+                document.getElementById("cemail2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.email;
+                }
+                errorflag = true;
+            }
+            // if(email.search(/^[a-zA-Z0-9!@#$%^&*]{8,20}$/)==-1){ 
+            //     // alert('hello');
+            //     document.getElementById("cemail").style.display ='none';         
+            //     document.getElementById("cemail2").style.display ='';
+            //     if(!focusOn){
+            //         focusOn=document.myform.email;
+            //     }
+            //     errorflag = true;
+            // }else{
+            //     document.getElementById("cemail").style.display ='none';
+            //     document.getElementById("cemail2").style.display='none';
+            // }   
+        }
+    
+        if(phone== ""){                            
+            document.getElementById("cph").style.display ='';
+            document.getElementById("cph2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.phone;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cph").style.display ='none';           
+            document.getElementById("cph2").style.display ='none';
+            if(phone.search(/^[0-9 ]+$/)==-1){ 
+                document.getElementById("cph").style.display ='none';         
+                document.getElementById("cph2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.phone;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("cph").style.display ='none';
+                document.getElementById("cph2").style.display='none';
+            }  
+        }
+    
+        if(gen == ""){                            
+            document.getElementById("cgen").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.gen;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cgen").style.display ='none';
+        }
+    
+        if(pp == ""){                            
+            document.getElementById("cpp").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.pp;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cpp").style.display ='none';
+        }
+    
+        if(pass == ""){                            
+            document.getElementById("cpass").style.display ='';
+            document.getElementById("cpass2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.pass;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cpass").style.display ='none';        
+            document.getElementById("cpass2").style.display ='none';
+            if (/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*+-])(.{8,20})$/.test(pass)){
+                document.getElementById("cpass").style.display ='none';
+                document.getElementById("cpass2").style.display ='none';
+            }
+            else{
+                document.getElementById("cpass").style.display ='none';
+                document.getElementById("cpass2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.pass;
+                }
+                errorflag = true;
+            }
+            // if(pass.search(/(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,20}/)==-1){
+            //     document.getElementById("cpass").style.display ='none';
+            //     document.getElementById("cpass2").style.display ='';
+            //     if(!focusOn){
+            //         focusOn=document.myform.pass;
+            //     }
+            //     errorflag = true;
+            // }else{
+            //     document.getElementById("cpass").style.display ='none';
+            //     document.getElementById("cpass2").style.display ='none';
+            // }
+        }
+    
+        if(cpass == ""){                            
+            document.getElementById("ccpass").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.cpass;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("ccpass").style.display ='none';      
+            if(pass!=cpass){
+                document.getElementById("ccpass2").style.display='';
+                errorflag = true;
+            }
+            else{
+                document.getElementById("ccpass2").style.display='none';
+                if(document.getElementById("cpass").style.display =='none' && document.getElementById("cpass2").style.display =='none'){
+                    pass;
+                }
+                else{
+                    document.getElementById("ccpass3").style.display='';
+                }
+            }
+        }
+    
+        if(address == ""){                            
+            document.getElementById("cadd").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.address;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cadd").style.display ='none';
+        }
+    
+        if(state == ""){                            
+            document.getElementById("cs").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.state;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cs").style.display ='none';          
+        }
+    
+        if(city == ""){                            
+            document.getElementById("cc").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.city;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cc").style.display ='none';     
+        }
+    
+        if(area == ""){                            
+            document.getElementById("ca").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.area;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("ca").style.display ='none';       
+        }
+    
+        if(focusOn){
+            focusOn.focus();
+        }
+        
+        if(errorflag == true)
+            return false;                       
+        else
+            return true;
+    }
+    </script>
+<!-- page-title -->
+    <div class="cmt-page-title-row">
+      <div class="cmt-page-title-row-inner">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-lg-12">
+                      <div class="page-title-heading">
+                          <h2 class="title">User Signup</h2>
+                      </div>
+                      <!-- <div class="breadcrumb-wrapper">
+                          <span>
+                              <a title="Homepage" href="">Home</a>
+                          </span>
+                          <span>Signup</span>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
+      </div>                    
+  </div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+
+  <section class="cmt-row clearfix" style="background-color: black;">
+      <div class="container">
+          <div class="row">
+                  <div class="col-lg-3"></div>
+              <div class="col-lg-8">
+                  <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                      <!-- <div class="p-3 mb-2 bg-success text-white"> -->
+                      <div class="layer-content" style="background-color:lavender;">
+                         
+                          <form method="POST" name="myform" id="myform" action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2"  style="color: red;display: none;" id="cfid">Enter Your First Name</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cfvid">Enter Your Valid First Name</span>
+                                        <span class="p-3 mb-2 text-dark text-input" >First Name:
+                                            {{ forms.first_name }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="clid">Enter Your Last Name</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="clvid">Enter Your Valid Last Name</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Last Name:
+                                            {{ forms.last_name }}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cemail">Enter Your Email id</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cemail2">Enter Your Valid Email id</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Email ID:
+                                            {{ forms.email_id }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cph">Enter Your Phone Number</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cph2">Enter Your Valid Phone Number</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Phone No:
+                                            {{ forms.phone }}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cgen">Choose Your Gender</span>
+                                        <span class="p-3 mb-2 text-dark text-input" >Gender:
+                                            {{ forms.gender }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cpp">Choose your profile picture</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Profile Picture:
+                                            {{ forms.profile_pic }}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cpass">Enter Your Password</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cpass2">Paswword must contain atleast 8 characters
+                                        <br>Password must contain atleast 1 lowercase letter<br>Password must contain atleast 1 UPPERCASE letter
+                                    <br>Password cannot be more than 20 characters<br>Password must contain atleast 1 special character</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Password:
+                                            {{ forms.password }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass">Enter Your Confirm Password</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass2">Password and Confirm Password don't match</span>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass3"><br><br><br><br><br></span>
+                                        <span class="p-3 mb-2 text-dark  text-input">Confirm Password:
+                                            {{ forms.cpassword }}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cadd">Enter Your Address</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Address:
+                                            {{ forms.address }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cs">Choose your state</span>
+                                        <span class="p-3 mb-2 text-dark text-input">State Name:
+                                            {{ forms.state_name }}
+                                        </span>
+                                    </label>
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="cc">Choose your city</span>
+                                        <span class="p-3 mb-2 text-dark text-input">City Name:
+                                            {{ forms.city_name }}
+                                        </span>
+                                    </label>
+                                    <label>
+                                        <span class="p-3 mb-2" style="color: red;display: none;" id="ca">Choose your area</span>
+                                        <span class="p-3 mb-2 text-dark text-input">Area Name:
+                                            {{ forms.area_name}}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit" onclick="return validation()"> Register</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </section>
+
+  <!--google_map-->
+  
+
+</div><!--site-main end-->
+
+{% endblock %}

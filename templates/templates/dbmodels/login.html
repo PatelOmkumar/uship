@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+<!-- page-title -->
+<div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">LOGIN FORM</h2>
+                    </div>
+                    <!-- <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="index.html">Home</a>
+                        </span>
+                        <span>Contact Us</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+
+
+<!--site-main start-->
+<div class="site-main">
+
+
+<section class="cmt-row clearfix" style="background-color: black;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ttm_single_image-wrapper">
+                    <img class="img-fluid" src="{% static 'images/login.jpg' %}" alt="image" style="width:500px">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                    
+                    <div class="layer-content" style="background-color: lavender;">
+                        <div class="mb-30">
+                            <h3 class="mb-5">! Login Here !</h3>
+                            
+                        </div>
+                        <form method="post" action="" class="contact__form cmt-contactform-1 wrap-form clearfix" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input title="Please enter your Username here!!" name="username" type="text" value="" placeholder="Username" required="required"></span>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        <span class="text-input"><input title="Please enter your Password here!!" name="pwd" type="password" value="" placeholder="Password" required="required"></span>
+                                    </label>
+                                </div>
+                            </div>
+                           
+                            <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit">Login</button>
+                            <br/><br/>
+                            {% if inactivemsg %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ inactivemsg }}
+                              </div>
+                            {% endif %}
+                            <center><a class="cmt-btn btn-inline cmt-icon-btn-right cmt-btn-size-md cmt-btn-color-dark" href="forgotpassword.html">Forgot Password? <i class="ti ti-arrow-right"></i></a></center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<!--google_map-->
+
+
+</div><!--site-main end-->
+
+
+{% endblock %}

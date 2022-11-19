@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %}
+<script>
+    function validation(){
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var email = document.getElementById("email").value;
+        var sub = document.getElementById("subject").value;
+        var mesg = document.getElementById("message").value;
+        var errorflag = false;
+        var focusOn = '';
+        if(fname == ""){
+            document.getElementById("cfid").style.display ='';
+            document.getElementById("cfvid").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.fname;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cfid").style.display ='none';
+            document.getElementById("cfvid").style.display ='none';
+            if(fname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("cfid").style.display ='none';
+                document.getElementById("cfvid").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.name;
+                }
+            errorflag = true;
+            }else{
+                document.getElementById("cfid").style.display ='none';
+                document.getElementById("cfvid").style.display ='none';
+            }
+        }
+        if(lname == ""){
+            document.getElementById("clid").style.display ='';
+            document.getElementById("clvid").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.lname;
+            }       
+        errorflag = true;
+        }else{
+            document.getElementById("clid").style.display ='none';
+            document.getElementById("clvid").style.display ='none';
+            if(lname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("clid").style.display ='none';
+                document.getElementById("clvid").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.lname;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("clid").style.display ='none';
+                document.getElementById("clvid").style.display ='none';
+            }
+        }   
+    
+        if(email == ""){                          
+            document.getElementById("cemail").style.display ='';
+            document.getElementById("cemail2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.email;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cemail").style.display ='none';
+            document.getElementById("cemail2").style.display ='none';
+            if(email.search(/^[a-zA-Z0-9!@#$%^&*]{8,20}$/)==-1){ 
+                document.getElementById("cemail").style.display ='none';         
+                document.getElementById("cemail2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.email;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("cemail").style.display ='none';
+                document.getElementById("cemail2").style.display='none';
+            }   
+        }
+
+        if(sub == ""){                            
+            document.getElementById("usubject").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.sub;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("usubject").style.display ='none';           
+        }
+
+
+        if(mesg == ""){                            
+            document.getElementById("umessage").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.mesg;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("umessage").style.display ='none';           
+        }
+        if(focusOn){
+            focusOn.focus();
+        }
+        if(errorflag == true)
+            return false;                       
+        else
+            return true;
+    }
+</script>
+<!-- page-title -->
+<div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">Contact Us</h2>
+                    </div>
+                    <!-- <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="">Home</a>
+                        </span>
+                        <span>Signup</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+<!--site-main start-->
+ <div class="site-main">
+
+
+    <section class=" clearfix" style="background-color: black;">
+        <div class="container">
+            <div class="row">
+                    <div class="col-lg-3"></div>
+                <div class="col-lg-8">
+                    <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                        
+                        <div class="layer-content" style="background-color: lavender;">
+                            <div class="">
+                                <h3 class="mb-5"></h3>
+                            </div>
+                            <form method="POST" name="myform" id="myform" action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cfid">Enter Your First Name</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cfvid">Enter Your Valid First Name</span>
+                                            <span class="p-3 mb-2 text-dark text-input" >First Name:
+                                                {{ forms.First_name }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="clid">Enter Your Last Name</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="clvid">Enter Your Valid Last Name</span>
+                                            <span class="p-3 mb-2 text-dark text-input" >Last Name:
+                                                {{ forms.Last_name }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cemail">Enter Your Email id</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cemail2">Enter Your Valid Email id</span>
+                                            <span class="p-3 mb-2 text-dark text-input" >Email ID:
+                                                {{ forms.Email }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="usubject">Enter Your Subject</span>
+                                            <span class="p-3 mb-2 text-dark text-input" >Subject:
+                                                {{ forms.Subject }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="umessage">Enter Your Message or Query</span>
+                                            <span class="p-3 mb-2 text-dark text-input" >Message:
+                                                {{ forms.Mesg }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit" onclick="return validation()">Contact</button>
+                            </form>
+                        </div>
+        </div>
+        </div>
+    </div>
+        </div>
+        </div>
+        </section>
+        </div>
+
+        
+{%  endblock %}

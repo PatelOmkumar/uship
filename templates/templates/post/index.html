@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+<script>
+    function validation()
+    {
+        alert('Posted Successfully...');
+        var post_img = document.getElementById("post_img").value;
+        var post_desc = document.getElementById("post_desc").value;
+        var scrap_kg = document.getElementById("scrap_kg").value;
+        var errorflag = false;
+        var focusOn = '';
+
+        if(post_img == ""){
+            document.getElementById("postimg").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.post_img;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("postimg").style.display ='none';
+        }
+    
+        if(post_desc == ""){
+            document.getElementById("postdesc").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.post_desc;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("postdesc").style.display ='none';
+        }   
+    
+        if(scrap_kg == ""){                            
+            document.getElementById("scrapkg").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.scrapkg;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("scrapkg").style.display ='none';
+            document.getElementById("vscrapkg").style.display ='none';
+            if(scrap_kg.search(/^[0-9 ]+$/)==-1){
+                document.getElementById("scrapkg").style.display ='none';
+                document.getElementById("vscrapkg").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.scrap_kg;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("scrapkg").style.display ='none';
+                document.getElementById("vscrapkg").style.display ='none';
+            }
+        }
+    
+        if(focusOn){
+            focusOn.focus();
+        }
+        
+        if(errorflag == true)
+            return false;                       
+        else
+            return true;
+    }
+</script>
+
+        <!-- page-title -->
+        <div class="cmt-page-title-row">
+            <div class="cmt-page-title-row-inner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Post Form</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div><!-- page-title end-->
+
+
+    <!--site-main start-->
+    <div class="site-main">
+
+
+        <section class="cmt-row clearfix" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="ttm_single_image-wrapper">
+                            <img class="img-fluid" src="{% static 'images/postimg.jpg' %}" alt="image" style="width: 600px;height: 600px;">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                            <div class="cmt-col-wrapper-bg-layer cmt-bg-layer">
+                                <div class="cmt-col-wrapper-bg-layer-inner"></div>
+                            </div>
+                            <div class="layer-content"  style="background-color:lavender;">
+                                <div class="mb-30">
+                                    <h3 class="mb-5">! Post Here !</h3>
+                                </div>
+                                <form method="POST" name="myform" id="myform" action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <label>
+                                                <span style="color: red;display: none;" id="postimg">Please enter images in jpg or png format only</span>
+                                                <!-- <span style="color: red;display: none;" id="postimg">Enter Your Scrap Image</span> -->
+                                                <span class="text-input">Post Image<br/>
+                                                    {{ forms.post_img }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span style="color: red;display: none;" id="scrapkg">Enter Your Scrap Weight</span>
+                                                <span style="color: red;display: none;" id="vscrapkg">Enter Your Valid Scrap Weight</span>
+                                                <span class="text-input">Scrap Estimated Weight (in Kg)
+                                                    {{ forms.scrap_kg }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span style="color: red;display: none;" id="scrapkg">Enter Your Scrap Weight</span>
+                                                <span style="color: red;display: none;" id="vscrapkg">Enter Your Valid Scrap Weight</span>
+                                                <span class="text-input">Scrap Base Price (in Rs)
+                                                    {{ forms.scrap_kg }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    
+                                        <div class="col-lg-12">
+                                            <label>
+                                                <span style="color: red;display: none;" id="postdesc">Enter Your Scrap Description</span>
+                                                <span class="text-input">Post Description
+                                                    {{ forms.post_desc }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit" onclick="return validation()">Post Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    {% endblock %}

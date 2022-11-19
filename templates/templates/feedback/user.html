@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+
+<table>
+  <tr>
+    <th>Feedback Text</th>
+    <th>Feedback Date</th>
+  </tr>
+  {% for objec in objec %}
+  <tr>
+    <td>{{ objec.feeback_text }}</td>
+    <td>{{ objec.feedback_date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

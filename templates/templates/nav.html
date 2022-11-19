@@ -1,0 +1,110 @@
+{% load static %}
+<div id="site-header-menu" class="site-header-menu cmt-textcolor-dark">
+    <div class="site-header-menu-inner cmt-stickable-header">
+        <div class="container">
+            <div class="cmt-bg cmt-col-bgcolor-yes cmt-right-span cmt-bgcolor-white mb_60 res-1199-mb-0 z-index-2">
+                <div class="cmt-col-wrapper-bg-layer cmt-bg-layer"></div>
+                <div class="layer-content">
+                    <!--site-navigation -->
+                    <div class="site-navigation d-flex flex-row">
+                        <div class="pl-5 cmt-bgcolor-skincolor mr-30 res-1199-pl-0 res-1199-mr-0"></div>
+                        <!-- site-branding -->
+                        <div class="site-branding mr-auto">
+                            <a class="home-link" href="" title="RWF" rel="home">
+                                <img id="logo-img" class="img-center" src="{% static 'images/logo3.PNG' %}" alt="logo-img">
+                            </a>
+                        </div><!-- site-branding end -->
+                        <div class="btn-show-menu-mobile menubar menubar--squeeze">
+                            <span class="menubar-box">
+                                <span class="menubar-inner"></span>
+                            </span>
+                        </div>
+                        <!-- menu -->
+                        <nav class="main-menu menu-mobile" id="menu">
+                            <ul class="menu">
+                                <li class="mega-menu-item">
+                                    <a href="/" class="mega-menu-link">Home</a>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="#" class="mega-menu-link">Learn More</a>
+                                    <ul class="mega-submenu">
+                                        <li><a href="{% url 'aboutUspage' %}">About Us</a>
+                                        </li><li><a href="{% url 'howitworks' %}">How it Works</a></li>
+                                        <li><a href="{% url 'blog' %}">RapidWorkFlow Blog</a></li>
+                                        <li><a href="{% url 'faqpage' %}">FAQs</a></li>
+                                    </ul>
+                                </li>
+                                <li class="mega-menu-item">
+                                <a href="{% url 'category' %}" class="mega-menu-link">Services</a>
+                            </li>
+                                <!-- <li class="mega-menu-item">
+                                    <a href="#" class="mega-menu-link">Services</a>
+                                    <ul class="mega-submenu">
+                                        <li><a href="{% url 'packersandmoverspage' %}">Packers and Movers</a>
+                                        </li><li><a href="{% url 'scrapcollectorspage' %}">Scrap Collectors</a></li>
+                                        <li><a href="{% url 'bothpackersandmoverspage' %}">Both Packers and Movers/Scrap Collectors</a></li>
+                                    </ul>
+                                </li> -->
+                                
+                                <!-- <li class="mega-menu-item">
+                                    <a href="{% url 'blog' %}" class="mega-menu-link">Blog</a>
+                                </li> -->
+
+                                {%  if user.is_authenticated %}
+                                <li class="mega-menu-item">
+                                    <a href="{% url 'myaccount' %}" class="mega-menu-link">My Account</a>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="{% url 'bid' %}" class="mega-menu-link">Bidding</a>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="{% url 'bid' %}" class="mega-menu-link">Contact</a>
+                                </li>
+                               
+                                <!-- <li class="mega-menu-item">
+                                    <a href="{% url 'logout' %}" class="mega-menu-link">Logout</a>
+                                </li> -->
+                                
+                                {%  else  %}
+                                <li class="mega-menu-item">
+                                    <a href="#" class="mega-menu-link">User</a>
+                                    <ul class="mega-submenu">
+                                        <li><a href="{% url 'UserSignup' %}"> SignUp</a>
+                                        </li><li><a href="{% url 'loginpage' %}"> Login</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                
+                                <li class="mega-menu-item">
+                                    <a href="#" class="mega-menu-link">Company</a>
+                                    <ul class="mega-submenu">
+                                        <li><a href="{% url 'CompanyForm' %}"> SignUp</a>
+                                        </li><li><a href="{% url 'loginpage' %}"> Login</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="" href="{% url 'contactus' %}">Contact</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        <div class="header_extra d-flex flex-row align-items-center justify-content-end">
+                           
+                           
+                            <div class="header_btn">
+                               
+                            </div>
+<!-- {% if user.is_authenticated %}
+                            <div class="header_btn">
+                                <a class="cmt-btn btn-inline cmt-icon-btn-right cmt-btn-size-md cmt-btn-color-dark" >Welcome {{ user.Username }}<i class="ti ti-arrow-right"></i></a>
+                            </div>
+{% endif %} -->
+                        </div>
+                    </div><!-- site-navigation end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- site-header-menu end-->

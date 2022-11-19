@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+ <!--site-main start-->
+ <div class="site-main">
+
+
+    <section class="cmt-row clearfix">
+        <div class="container">
+            <div class="row">
+                    <div class="col-lg-3"></div>
+                <div class="col-lg-8">
+                    <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                        
+                        <div class="layer-content">
+                            <div class="mb-30">
+                                <h3 class="mb-5">! User Signup Here !</h3>
+                                
+                            </div>
+
+        <form action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data" method="POST">
+
+                
+            {% csrf_token %}
+            {{ forms.as_p }}
+            
+           
+            <input type="submit" value="Submit Your data" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" />
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        </div>
+        
+{%  endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+
+
+  <!--site-main start-->
+  <div class="site-main">
+
+
+    <div class="cmt-row sidebar cmt-sidebar-right cmt-bgcolor-grey break-991-colum clearfix" style="background-color:black;color: white;">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-8 content-area" style="color: white;">
+                    <!-- post -->
+                    <h1 style="color: white;">How you are going to avail this bidding feature?</h1>
+                    <h3 style="color: white;">Here is how..Have a look!!</h3>
+                    <article class="post cmt-blog-classic clearfix">
+                        <!-- post-featured-wrapper -->
+                    <ol>
+                    <li>First decide your category and the service you want to render For example:Packers and Movers, Scrap Collectors or Packers and Movers with Scrap Collectors.</li>
+                    <li>Then upload pictures of your chosen category like scrap items to sell or your items you want to shift from the button below.</li>
+                    <li>If you choose to upload posts of your scrap items then it will let multiple companies bid on it and you will be able to select the company according to your preference.(Post of your scrap items is mandatory)</li>
+                    <li>If you decide for packers and movers services then your post is optional. It will only help companies to refer your items for shifting safely and wisely.</li>
+                    <li>If you decide to avail the services of both packers and movers as well as scrap collectors then your post is optional too.</li>
+                    </ol>     
+                    <p style="background-color: yellow; color: black;"><b>Note: Bidding Feature itself is optional. You can directly book companies as well!!<br>Bidding is only possible when you book Scrap Collectors</b></p><p>THANK YOU...HAVE A HAPPY SERVICE</p>
+                    </article><!-- post end -->
+                    <!-- post -->
+                    <form method="post" action="{% url 'post' %}" class="contact__form cmt-contactform-1 wrap-form clearfix" >
+                        {% csrf_token %}
+                    <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit">Post Now</button>
+                    </form>
+                    
+                
+                
+                </div>
+            </div><!-- row end -->
+        </div>
+    </div>
+
+
+</div><!--site-main end-->
+
+
+{% endblock %}

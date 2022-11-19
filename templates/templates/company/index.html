@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+<script>
+    function validation(){
+        var cmname = document.getElementById("company_name").value;
+        var phone=document.getElementById("company_phone").value;
+        var pass = document.getElementById("company_password").value;
+        var cpass = document.getElementById("company_cpassword").value;
+        var email = document.getElementById("company_emailid").value;
+        var logo=document.getElementById("company_logo").value;
+        var address = document.getElementById("company_address").value;
+        var desc=document.getElementById("company_desc").value;
+        var cat=document.getElementById("company_category").value;
+        // var subcat=document.getElementById("company_subcategory").value;
+        var branch=document.getElementById("branch").value;
+        var errorflag=false;
+        var focusOn = '';
+
+        if(cmname == ""){
+            document.getElementById("cname").style.display ='';
+            document.getElementById("vname").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.cmname;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cname").style.display ='none';
+            document.getElementById("vname").style.display ='none';
+            if(cmname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("cname").style.display ='none';
+                document.getElementById("vname").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.cmname;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("cname").style.display ='none';
+                document.getElementById("vname").style.display ='none';
+            }
+        }
+
+        if(phone == ""){                            
+            document.getElementById("phone").style.display ='';
+            document.getElementById("vphone").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.phone;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("phone").style.display ='none';           
+            document.getElementById("vphone").style.display ='none';
+            if(phone.search(/^[0-9 ]+$/)==-1){ 
+                document.getElementById("phone").style.display ='none';         
+                document.getElementById("vphone").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.phone;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("phone").style.display ='none';
+                document.getElementById("vphone").style.display='none';
+            }  
+
+        }
+        if(pass == ""){                            
+            document.getElementById("cpass").style.display ='';
+            document.getElementById("cpass2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.pass;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cpass").style.display ='none';        
+            document.getElementById("cpass2").style.display ='none';
+            if (/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*+-])(.{8,20})$/.test(pass)){
+                document.getElementById("cpass").style.display ='none';
+                document.getElementById("cpass2").style.display ='none';
+            }
+            else{
+                document.getElementById("cpass").style.display ='none';
+                document.getElementById("cpass2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.pass;
+                }
+                errorflag = true;
+            }
+            // if(pass.search(/(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,20}/)==-1){
+            //     document.getElementById("cpass").style.display ='none';
+            //     document.getElementById("cpass2").style.display ='';
+            //     if(!focusOn){
+            //         focusOn=document.myform.name;
+            //     }
+            //     errorflag = true;
+            // }else{
+            //     document.getElementById("cpass").style.display ='none';
+            //     document.getElementById("cpass2").style.display ='none';
+            // }
+        }
+
+        if(cpass == ""){                            
+            document.getElementById("ccpass").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.cpass;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("ccpass").style.display ='none';      
+            if (pass!=cpass){
+                document.getElementById("ccpass2").style.display='';
+            }else{
+                document.getElementById("ccpass2").style.display='none';
+                if(document.getElementById("cpass").style.display =='none' && document.getElementById("cpass2").style.display =='none'){
+                    pass;
+                }
+                else{
+                    document.getElementById("ccpass3").style.display='';
+                }
+            }     
+        }
+
+        if(email == ""){                          
+            document.getElementById("cemail").style.display ='';
+            document.getElementById("cemail2").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.email;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cemail").style.display ='none';
+            document.getElementById("cemail2").style.display ='none';
+            if (/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(email)){
+                document.getElementById("cemail").style.display ='none';
+                document.getElementById("cemail2").style.display ='none';
+            }
+            else{
+                document.getElementById("cemail").style.display ='none';
+                document.getElementById("cemail2").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.email;
+                }
+                errorflag = true;
+            }
+            // if(email.search(/^[a-zA-Z0-9!@#$%^&*]{8,20}$/)==-1){ 
+            //     document.getElementById("cemail").style.display ='none';         
+            //     document.getElementById("cemail2").style.display ='';
+            //     if(!focusOn){
+            //         focusOn=document.myform.email;
+            //     }
+            //     errorflag = true;
+            // }else{
+            //     document.getElementById("cemail").style.display ='none';
+            //     document.getElementById("cemail2").style.display='none';
+            // }   
+        }
+
+        if(logo == ""){                            
+            document.getElementById("clogo").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.logo;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("clogo").style.display ='none';           
+        }
+
+        if(address == ""){                            
+            document.getElementById("cadd").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.address;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cadd").style.display ='none';           
+        }
+
+        if(desc == ""){                            
+            document.getElementById("cdesc").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.desc;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cdesc").style.display ='none';           
+        }
+
+        if(cat == ""){                            
+            document.getElementById("cat").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.cat;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("cat").style.display ='none';           
+        }
+
+        // if(subcat == ""){                            
+        //     document.getElementById("subcat").style.display ='';
+        //     if(!focusOn){
+        //         focusOn=document.myform.subcat;
+        //     }       
+        //     errorflag = true;
+        // }else{
+        //     document.getElementById("subcat").style.display ='none';           
+        // }
+
+        if(branch == ""){                            
+            document.getElementById("branch").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.branch;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("branch").style.display ='none';           
+        }
+
+        if(focusOn){
+            focusOn.focus();
+        }
+        if(errorflag == true)
+            return false;                       
+        else
+            return true;
+    }
+</script>
+<!-- page-title -->
+<div class="cmt-page-title-row">
+    <div class="cmt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="page-title-heading">
+                        <h2 class="title">Company Signup</h2>
+                    </div>
+                    <!-- <div class="breadcrumb-wrapper">
+                        <span>
+                            <a title="Homepage" href="">Home</a>
+                        </span>
+                        <span>Signup</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div><!-- page-title end-->
+
+<!--site-main start-->
+<div class="site-main">
+    <section class="cmt-row clearfix" style="background-color: black;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-8">
+                    <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                        <div class="layer-content" style="background-color: lavender;">
+                            <div class="mb-30">
+                                <h3 class="mb-5">! Signup Here !</h3>
+                            </div>
+                            <form method="POST" name="myform" id="myform" action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cname">Enter Your Company Name</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="vname">Enter Your Valid Company Name</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Company Name:
+                                                {{ forms.company_name }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="phone">Enter Your Company Phone Number</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="vphone">Enter Your Valid Company Phone Number</span>                 
+                                            <span class="p-3 mb-2 text-dark text-input">Company Phone:
+                                                {{ forms.company_phone }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cpass">Enter Your Password</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cpass2">Paswword must contain atleast 8 characters
+                                            <br>Password must contain atleast 1 lowercase letter<br>Password must contain atleast 1 UPPERCASE letter
+                                        <br>Password cannot be more than 20 characters<br>Password must contain atleast 1 special character</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Company Password:
+                                                {{ forms.company_password }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass">Enter Your Confirm Password</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass2">Password and Confirm Password don't match</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="ccpass3"><br><br><br><br><br></span>
+                                            <span class="p-3 mb-2 text-dark text-input">Confirm Password:
+                                                {{ forms.company_cpassword }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cemail">Enter Your Company Email id</span>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cemail2">Enter Your Valid Company Email id</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Company Email Id:
+                                                {{ forms.company_emailid }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="clogo">Choose your Company Logo</span>                  
+                                            <span class="p-3 mb-2 text-dark text-input">Company Logo:
+                                                {{ forms.company_logo }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cadd">Enter Your Company Address</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Company Address:
+                                                {{ forms.company_address }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cdesc">Enter your Company Description</span>  
+                                            <span class="p-3 mb-2 text-dark text-input">Company Description:
+                                                {{ forms.company_desc }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cat">Select Your Company Category</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Company Category:
+                                                {{ forms.company_category }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="cstate">Select your Company States</span>  
+                                            <span class="p-3 mb-2 text-dark text-input">States you work:
+                                                {{ forms.state }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="ccity">Select Your Company Cities</span>
+                                            <span class="p-3 mb-2 text-dark text-input">Cities you work:
+                                                {{ forms.city }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <span class="p-3 mb-2" style="color: red;display: none;" id="branch">Select your Company Branch</span>  
+                                            <span class="p-3 mb-2 text-dark text-input">Company Branch:
+                                                {{ forms.branch }}
+                                            </span>
+                                            
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- {% if msg %}
+                                
+                                <div class="alert alert-primary" role="alert">
+                                    {{ msg }}
+                                </div>
+                                
+
+                                {% endif %} -->
+                                <button name="submit"  class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit" onclick="return validation()"> Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+        
+{% endblock %}

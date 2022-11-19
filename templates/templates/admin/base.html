@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+    <style type="text/css">
+    #header #branding h1 {
+        background-image: url("{% static 'images/logo3.png' %}");
+    }
+    </style>
+{% endblock %}
+
+<a href="{% url 'admin:index' %}" class="django-admin-logo">
+    <!-- Django Administration -->
+    <img src="{% static 'images/logo3.png' %}" alt="{{ site_header|default:_('Django Admin') }}">
+</a>

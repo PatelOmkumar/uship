@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{%  load static  %}
+{% block content %} 
+<script>
+    function validation()
+    {
+        alert('Thank you for booking an appointment with us...\nWe will contact you soon.');
+        var from_place = document.getElementById("from_place").value;
+        var to_place = document.getElementById("To_place").value;
+        var moving_date = document.getElementById("moving_date").value;
+        var errorflag = false;
+        var focusOn = '';
+
+        if(from_place == ""){
+            document.getElementById("fromplace").style.display ='';
+            if(!focusOn){
+                focusOn=document.myform.from_place;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("fromplace").style.display ='none';
+            document.getElementById("vfromplace").style.display ='none';
+            if(from_place.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("fromplace").style.display ='none';
+                document.getElementById("vfromplace").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.from_place;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("fromplace").style.display ='none';
+                document.getElementById("vfromplace").style.display ='none';
+            }
+        }
+    
+        if(to_place == ""){
+            document.getElementById("toplace").style.display ='';
+            document.getElementById("vtoplace").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.to_place;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("toplace").style.display ='none';
+            document.getElementById("vtoplace").style.display ='none';
+            if(lname.search(/^[a-zA-Z ]+$/)==-1){
+                document.getElementById("toplace").style.display ='none';
+                document.getElementById("vtoplace").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.to_place;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("toplace").style.display ='none';
+                document.getElementById("vtoplace").style.display ='none';
+            }
+        }   
+    
+        if(moving_date == ""){                            
+            document.getElementById("movedate").style.display ='';
+            document.getElementById("vmovedate").style.display ='none';
+            if(!focusOn){
+                focusOn=document.myform.moving_date;
+            }       
+            errorflag = true;
+        }else{
+            document.getElementById("movedate").style.display ='none';
+            if(moving_date.search(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/)==-1){
+                document.getElementById("movedate").style.display ='none';
+                document.getElementById("vmovedate").style.display ='';
+                if(!focusOn){
+                    focusOn=document.myform.moving_date;
+                }
+                errorflag = true;
+            }else{
+                document.getElementById("movedate").style.display ='none';
+                document.getElementById("vmovedate").style.display ='none';
+            }
+        }
+    
+        if(focusOn){
+            focusOn.focus();
+        }
+
+        if(errorflag == true)
+            return false;                       
+        else{
+            alert('Thank you for booking an appointment with us...\nWe will contact you soon.');
+            return true;
+        }
+            
+    }
+</script>
+        <!-- page-title -->
+        <div class="cmt-page-title-row">
+            <div class="cmt-page-title-row-inner">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="page-title-heading">
+                                <h2 class="title">Booking Form</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div><!-- page-title end-->
+
+
+    <!--site-main start-->
+    <div class="site-main">
+
+
+        <section class="cmt-row clearfix" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="ttm_single_image-wrapper">
+                            <img class="img-fluid" src="{% static 'images/book-now3.jpg' %}" alt="image" style="width: 600px; height: 600px;">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cmt-bg cmt-col-bgcolor-yes cmt-bgcolor-grey spacing-12 z-index-2">
+                            <div class="cmt-col-wrapper-bg-layer cmt-bg-layer">
+                                <div class="cmt-col-wrapper-bg-layer-inner"></div>
+                            </div>
+                            <div class="layer-content" style="background-color:lavender;">
+                                <div class="mb-30">
+                                    <h3 class="mb-5">! Book Here !</h3>
+                                </div>
+                                <form method="POST" name="myform" id="myform" action=""  class="contact__form cmt-contactform-1 wrap-form clearfix" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span style="color: red;display: none;" id="fromplace">Enter Your Source</span>
+                                                <span style="color: red;display: none;" id="vfromplace">Enter Your Valid Source</span>
+                                                <span class="mb-30 text-input">From Place
+                                                    {{ forms.from_place  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span style="color: red;display: none;" id="toplace">Enter Your Destination</span>
+                                                <span style="color: red;display: none;" id="vtoplace">Enter Your Valid Destination</span>
+                                                <span class="text-input">To Place
+                                                    {{ forms.To_place  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>
+                                                <span style="color: red;display: none;" id="movedate">Enter Your Moving Date</span>
+                                                <span style="color: red;display: none;" id="vmovedate">Enter Your Valid Moving Date</span>
+                                                <span class="text-input">Moving Date
+                                                     {{ forms.moving_date  }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <label>
+                                                <span class="text-input">Message(Optional)
+                                                    {{ forms.mes }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button name="submit" class="submit cmt-btn cmt-btn-size-md cmt-btn-shape-square cmt-btn-style-fill cmt-btn-color-skincolor" type="submit" onclick="return validation()">Book Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!--site-main end-->
+
+    {% endblock %}
